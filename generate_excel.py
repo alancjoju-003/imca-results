@@ -8,8 +8,8 @@ with open('parsed_students_data.json', encoding='utf-8') as f:
     data = json.load(f)
 
 # Sort students into College 1 and College 2
-PRNS_COLLEGE_1 = [f'2232421100{i:02d}' for i in range(1, 51)]
-PRNS_COLLEGE_2 = [f'2232421101{i:02d}' for i in range(1, 51)]
+PRNS_COLLEGE_1 = [f'2232421100{i:02d}' for i in range(1, 66)]
+PRNS_COLLEGE_2 = [f'2232421101{i:02d}' for i in range(1, 67)]
 
 c1_students = [data[p] for p in PRNS_COLLEGE_1 if p in data]
 c2_students = [data[p] for p in PRNS_COLLEGE_2 if p in data]
@@ -136,7 +136,7 @@ ws_sum['A2'].font = font_subtitle
 
 # KPI Cards
 kpis = [
-    ("Total Students", len(all_students), "Col 1: 44 | Col 2: 43"),
+    ("Total Students", len(all_students), f"Col 1: {len(c1_students)} | Col 2: {len(c2_students)}"),
     ("Overall Cleared (S1-S8)", f"{sum(1 for s in all_students if s['summary']['overall_status'] == 'Passed')} / {len(all_students)}", f"{round(sum(1 for s in all_students if s['summary']['overall_status'] == 'Passed')/len(all_students)*100, 1)}% Pass Rate"),
     ("De Paul Cleared", f"{sum(1 for s in c1_students if s['summary']['overall_status'] == 'Passed')} / {len(c1_students)}", f"{round(sum(1 for s in c1_students if s['summary']['overall_status'] == 'Passed')/len(c1_students)*100, 1)}% Pass Rate"),
     ("SCMS Cleared", f"{sum(1 for s in c2_students if s['summary']['overall_status'] == 'Passed')} / {len(c2_students)}", f"{round(sum(1 for s in c2_students if s['summary']['overall_status'] == 'Passed')/len(c2_students)*100, 1)}% Pass Rate"),
@@ -441,7 +441,7 @@ ws_c1 = wb.create_sheet('College 1 - De Paul')
 build_college_sheet(
     ws_c1,
     "COLLEGE 1: DE PAUL INSTITUTE OF SCIENCE & TECHNOLOGY, ANGAMALY",
-    "PRN Range: 223242110001 to 223242110050 | Integrated Master of Computer Applications (2022-2027)",
+    "PRN Range: 223242110001 to 223242110065 | Integrated Master of Computer Applications (2022-2027)",
     c1_sorted,
     'c1_cleared_rank',
     is_c1=True
@@ -454,7 +454,7 @@ ws_c2 = wb.create_sheet('College 2 - SCMS')
 build_college_sheet(
     ws_c2,
     "COLLEGE 2: SCMS SCHOOL OF TECHNOLOGY & MANAGEMENT, ALUVA",
-    "PRN Range: 223242110101 to 223242110150 | Integrated Master of Computer Applications (2022-2027)",
+    "PRN Range: 223242110101 to 223242110166 | Integrated Master of Computer Applications (2022-2027)",
     c2_sorted,
     'c2_cleared_rank',
     is_c1=False
@@ -666,6 +666,12 @@ ws_audit.auto_filter.ref = f"A4:{get_column_letter(len(audit_headers))}{row_audi
 
 # Save workbook
 output_path = 'MG_University_IMCA_Batch_2022_Semesters_1_to_8_Results_and_Ranks.xlsx'
-wb.save(output_path)
-print(f"Excel workbook generated successfully at: {output_path}")
+try:
+    wb.save(output_path)
+    print(f"Excel workbook generated successfully at: {output_path}")
+except PermissionError:
+    alt_path = 'MG_University_IMCA_Batch_2022_Semesters_1_to_8_Results_and_Ranks_Updated.xlsx'
+    wb.save(alt_path)
+    print(f"Original file is locked by Excel. Saved updated workbook to: {alt_path}")
 print(f"Total audit course rows: {row_audit_ptr - 5}")
+
