@@ -42,8 +42,8 @@ SEMESTER_CREDITS = {
 
 SEMESTER_ORDER = ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8']
 
-PRNS_COLLEGE_1 = [f'2232421100{i:02d}' for i in range(1, 51)]
-PRNS_COLLEGE_2 = [f'2232421101{i:02d}' for i in range(1, 51)]
+PRNS_COLLEGE_1 = [f'2232421100{i:02d}' for i in range(1, 66)]
+PRNS_COLLEGE_2 = [f'2232421101{i:02d}' for i in range(1, 67)]
 ALL_PRNS = PRNS_COLLEGE_1 + PRNS_COLLEGE_2
 
 def parse_html_table(html):

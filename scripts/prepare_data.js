@@ -9,8 +9,8 @@ if (!fs.existsSync(parsedPath)) {
 
 const rawData = JSON.parse(fs.readFileSync(parsedPath, 'utf8'));
 
-const PRNS_COLLEGE_1 = Array.from({ length: 50 }, (_, i) => '2232421100' + String(i + 1).padStart(2, '0'));
-const PRNS_COLLEGE_2 = Array.from({ length: 50 }, (_, i) => '2232421101' + String(i + 1).padStart(2, '0'));
+const PRNS_COLLEGE_1 = Array.from({ length: 65 }, (_, i) => '2232421100' + String(i + 1).padStart(2, '0'));
+const PRNS_COLLEGE_2 = Array.from({ length: 66 }, (_, i) => '2232421101' + String(i + 1).padStart(2, '0'));
 
 const SEMESTER_CREDITS = {
   S1: 24,

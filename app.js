@@ -181,7 +181,7 @@
     } else {
       showError(
         'Student Not Found', 
-        `No record found for "${rawVal}". Please verify the register number (De Paul: 223242110001–50, SCMS: 223242110101–50).`
+        `No record found for "${rawVal}". Please verify the register number (De Paul: 223242110001–65, SCMS: 223242110101–66).`
       );
     }
   };
@@ -356,6 +356,10 @@
     // KPI 2: University Rank
     document.getElementById('kpi-univ-rank').textContent = `#${summary.univ_rank || '--'}`;
     document.getElementById('kpi-univ-cleared').textContent = `Cleared Rank: #${summary.univ_cleared_rank || '--'}`;
+    const univFooter = document.getElementById('kpi-univ-footer');
+    if (univFooter && appData) {
+      univFooter.textContent = `Across all ${Object.keys(appData.students).length} students (both colleges)`;
+    }
 
     // KPI 3: College Rank
     const collegeTitle = student.college_code === 'DIST' ? 'De Paul (DIST) Rank' : 'SCMS Rank';
