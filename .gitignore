@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Cache & Temporary data
+raw_cache/
+*.pyc
+__pycache__/
+~$*
+*.tmp
+
+# Environment & Local
+.env
+.env.local
+.DS_Store
+Thumbs.db

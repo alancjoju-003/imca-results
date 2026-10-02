@@ -1,0 +1,22 @@
+{
+  "name": "mgu-imca-results-portal",
+  "version": "1.0.0",
+  "description": "Consolidated Academic Results, SGPA, CGPA & Ranks Portal for Mahatma Gandhi University IMCA Batch 2022-2027",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "prepare-data": "node scripts/prepare_data.js",
+    "build": "node scripts/prepare_data.js"
+  },
+  "keywords": [
+    "mgu",
+    "imca",
+    "results",
+    "cgpa",
+    "ranks",
+    "academic-portal"
+  ],
+  "author": "",
+  "license": "MIT"
+}
