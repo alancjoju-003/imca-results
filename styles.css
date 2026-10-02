@@ -1638,6 +1638,59 @@ body {
   font-size: 11px;
 }
 
+.footer-center {
+  display: flex;
+  align-items: center;
+}
+
+.footer-portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  padding: 7px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-card);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer-portfolio-link:hover {
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(99, 102, 241, 0.45);
+  color: #c7d2fe;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.2);
+}
+
+.portfolio-author-name {
+  color: #fff;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footer-portfolio-link:hover .portfolio-author-name {
+  color: #a5b4fc;
+}
+
+.portfolio-badge-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.portfolio-arrow-icon {
+  color: var(--text-dim);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+
+.footer-portfolio-link:hover .portfolio-arrow-icon {
+  color: #818cf8;
+  transform: translate(2px, -2px);
+}
+
 .status-indicator {
   display: inline-flex;
   align-items: center;
@@ -1691,6 +1744,12 @@ body {
 
   .kpi-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
   }
 }
 
